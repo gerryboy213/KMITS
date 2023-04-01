@@ -36,5 +36,6 @@
   "activeTarget": "Development",
   "projectType": "web",
   "userUploadsFolder": "/public/uploads",
-  "extensions": []
+  "extensions": [],
+  "activeGitRemote": "KMITS"
 }
