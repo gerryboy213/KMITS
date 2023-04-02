@@ -3,12 +3,12 @@
 <div is="dmx-browser" id="browser1"></div>
 <dmx-notifications id="notifies1"></dmx-notifications>
 <meta name="ac:route" content="/register">
-<div class="container">
+<div class="container mt-5">
     <form id="register1" method="post" is="dmx-serverconnect-form" action="/api/registration/register" dmx-on:error="notifies1.danger('An error occurred')" dmx-on:unauthorized="notifies1.warning('Unauthorized')" dmx-on:success="register1.reset();browser1.goto('/validate-account',true,'Validate Account')">
         <input id="text1" name="product_id" type="hidden" class="form-control">
         <input id="text2" name="product_name" type="hidden" class="form-control" dmx-bind:value="conn_getcode.data.regcode">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6 border rounded rounded-2 border-success border-1">
                 <div class="row">
                     <div class="col text-center">
                         <h1>Register</h1>
@@ -49,7 +49,7 @@
 
                     </div>
                 </div>
-                <div class="row">
+                <div class="row pt-3">
                     <div class="col"><button id="register1_submit" class="btn mt-4 btn-primary" type="submit">Register</button></div>
                 </div>
             </div>

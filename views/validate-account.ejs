@@ -2,7 +2,7 @@
 
 <dmx-notifications id="notifies1"></dmx-notifications>
 <div is="dmx-browser" id="browser1"></div>
-<div class="container">
+<div class="container mt-5">
     <div class="row">
         <div class="col">
             <h1>Validate Your Account</h1>
@@ -10,15 +10,15 @@
     </div>
     <div class="row">
         <div class="col">
-            <p>You must now validate your account by adding the entering the code sent to your registered email address. Unconfirmed accounts will be removed after 24 hours</p>
+            <p>You must now validate your account by adding the entering the code sent to your registered email address. Unconfirmed accounts will be removed after 48<span style="background-color: var(--bs-body-bg); color: var(--bs-body-color); font-family: var(--bs-body-font-family); font-size: var(--bs-body-font-size); font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);">&nbsp;hours</span></p>
         </div>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col border rounded rounded-2 border-success border-1 style1">
             <form id="form1" is="dmx-serverconnect-form" method="post" action="/api/registration/validate_code" dmx-on:unauthorized="notifies1.warning('Unauthorized')" dmx-on:error="notifies1.danger('Error')" dmx-on:success="browser1.goto('/',true,'Home Page')">
                 <div class="form-group mb-3 row">
                     <label for="inp_authcode" class="col-sm-2 col-form-label">Validation Code</label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-10 pt-2">
                         <input type="text" class="form-control" id="inp_authcode" name="authcode" aria-describedby="input1_help" placeholder="Enter Validation Code" required="">
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                 <div class="form-group mb-3 row">
                     <div class="col-sm-2">&nbsp;</div>
                     <div class="col-sm-10">
-                        <button id="btn1_submit" type="submit" class="btn btn-primary">Submit</button>
+                        <button id="btn1_submit" type="submit" class="btn btn-primary">Validate</button>
                         <button id="btn1_reset" type="reset" class="btn btn-secondary">Reset</button>
                     </div>
                 </div>
