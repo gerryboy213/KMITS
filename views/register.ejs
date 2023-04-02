@@ -4,7 +4,7 @@
 <dmx-notifications id="notifies1"></dmx-notifications>
 <meta name="ac:route" content="/register">
 <div class="container">
-    <form id="register1" method="post" is="dmx-serverconnect-form" action="/api/registration/register" dmx-on:error="notifies1.danger('An error occurred')" dmx-on:unauthorized="notifies1.warning('Unauthorized')" dmx-on:success="register1.reset();browser1.goto('/',true,'Home Page')">
+    <form id="register1" method="post" is="dmx-serverconnect-form" action="/api/registration/register" dmx-on:error="notifies1.danger('An error occurred')" dmx-on:unauthorized="notifies1.warning('Unauthorized')" dmx-on:success="register1.reset();browser1.goto('/validate-account',true,'Validate Account')">
         <input id="text1" name="product_id" type="hidden" class="form-control">
         <input id="text2" name="product_name" type="hidden" class="form-control" dmx-bind:value="conn_getcode.data.regcode">
         <div class="row justify-content-center">

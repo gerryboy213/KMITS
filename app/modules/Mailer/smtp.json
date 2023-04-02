@@ -1,0 +1,12 @@
+{
+  "name": "smtp",
+  "module": "mail",
+  "action": "setup",
+  "options": {
+    "username": "info@hpdpb.com",
+    "password": "BA#6xagySU$o",
+    "host": "mail.hpdpb.com",
+    "port": 465,
+    "useSSL": true
+  }
+}

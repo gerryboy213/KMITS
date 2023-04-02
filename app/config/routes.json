@@ -15,6 +15,11 @@
       "path": "/termsandconditions",
       "page": "termsandconditions",
       "layout": "main"
+    },
+    {
+      "path": "/validate-account",
+      "page": "validate-account",
+      "layout": "main"
     }
   ]
 }
