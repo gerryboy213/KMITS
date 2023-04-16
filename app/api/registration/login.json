@@ -22,16 +22,115 @@
     ]
   },
   "exec": {
-    "steps": {
-      "name": "identity",
-      "module": "auth",
-      "action": "login",
-      "options": {
-        "provider": "KMITSsec",
-        "username": "{{$_POST.email}}"
+    "steps": [
+      {
+        "name": "identity",
+        "module": "auth",
+        "action": "login",
+        "options": {
+          "provider": "KMITSsec",
+          "username": "{{$_POST.email}}"
+        },
+        "output": true,
+        "meta": []
       },
-      "output": true,
-      "meta": []
-    }
+      {
+        "name": "identity1",
+        "module": "auth",
+        "action": "identify",
+        "options": {
+          "provider": "KMITSsec"
+        },
+        "output": true,
+        "meta": []
+      },
+      {
+        "name": "query",
+        "module": "dbconnector",
+        "action": "single",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "select",
+            "columns": [
+              {
+                "table": "user",
+                "column": "validated"
+              }
+            ],
+            "params": [
+              {
+                "operator": "equal",
+                "type": "expression",
+                "name": ":P1",
+                "value": "{{identity1}}",
+                "test": ""
+              }
+            ],
+            "table": {
+              "name": "user"
+            },
+            "primary": "user_id",
+            "joins": [],
+            "wheres": {
+              "condition": "AND",
+              "rules": [
+                {
+                  "id": "user.user_id",
+                  "field": "user.user_id",
+                  "type": "double",
+                  "operator": "equal",
+                  "value": "{{identity1}}",
+                  "data": {
+                    "table": "user",
+                    "column": "user_id",
+                    "type": "number",
+                    "columnObj": {
+                      "type": "increments",
+                      "primary": true,
+                      "unique": false,
+                      "nullable": false,
+                      "name": "user_id"
+                    }
+                  },
+                  "operation": "="
+                }
+              ],
+              "conditional": null,
+              "valid": true
+            },
+            "query": "select `validated` from `user` where `user`.`user_id` = ?"
+          }
+        },
+        "output": true,
+        "meta": [
+          {
+            "type": "datetime",
+            "name": "validated"
+          }
+        ],
+        "outputType": "object"
+      },
+      {
+        "name": "",
+        "module": "core",
+        "action": "condition",
+        "options": {
+          "if": "{{query.validated.length()<1}}",
+          "then": {
+            "steps": {
+              "name": "forbidden",
+              "module": "core",
+              "action": "response",
+              "options": {
+                "status": 403,
+                "data": "forbidden"
+              }
+            }
+          }
+        },
+        "outputType": "boolean"
+      }
+    ]
   }
 }
