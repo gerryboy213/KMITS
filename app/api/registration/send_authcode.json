@@ -107,7 +107,7 @@
     "options": {
       "instance": "smtp",
       "subject": "Your Authorization code",
-      "fromName": "HPDPB KMITS",
+      "fromName": "KMITS",
       "fromEmail": "info@hpdpb.com",
       "toName": "{{query.first_name+' '+query.last_name}}",
       "toEmail": "{{query.email}}",
