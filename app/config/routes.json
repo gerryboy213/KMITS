@@ -25,6 +25,16 @@
       "path": "/login",
       "page": "login",
       "layout": "main"
+    },
+    {
+      "path": "/adminhome",
+      "page": "kmitsadmin/adminhome",
+      "layout": "admin"
     }
-  ]
+  ],
+  "layouts": {
+    "admin": {
+      "exec": "/api/Security/isadmin"
+    }
+  }
 }
