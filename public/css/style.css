@@ -1,2 +1,7 @@
 .style1 {}
 .style2 {}
+@media (min-width: 992px) {
+.style3 {
+background-color: #285c4d
+}
+}

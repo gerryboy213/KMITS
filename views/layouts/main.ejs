@@ -20,30 +20,33 @@
   <script src="/dmxAppConnect/dmxBootstrap5Modal/dmxBootstrap5Modal.js" defer></script>
   <script src="/dmxAppConnect/dmxBootstrap5Navigation/dmxBootstrap5Navigation.js" defer></script>
   <script src="/dmxAppConnect/dmxFormatter/dmxFormatter.js" defer></script>
+  <script src="/dmxAppConnect/dmxBootbox5/bootstrap-modbox.min.js" defer></script>
+  <script src="/dmxAppConnect/dmxBootbox5/dmxBootbox5.js" defer></script>
 </head>
 
 <body is="dmx-app" id="main">
+  <div is="dmx-browser" id="browser1"></div>
   <dmx-serverconnect id="conn_layout_whoami" url="/api/registration/whoami"></dmx-serverconnect>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark style3 text-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">KMITS</a>
+        <a class="navbar-brand" href="#">KMITS {{conn_layout_whoami.data.query_who_am_i.first_name+' '+conn_layout_whoami.data.query_who_am_i.last_name}}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar1_collapse" aria-controls="navbar1_collapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbar1_collapse">
+        <div class="collapse navbar-collapse text-light" id="navbar1_collapse">
           <div class="navbar-nav">
             <a class="nav-item nav-link active" href="#">Home</a>
-            <a class="nav-item nav-link" href="#">Link</a>
+            <a class="nav-item nav-link" href="#">OPCR</a>
             <div class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbar1_dropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account&nbsp;</a>
               <div class="dropdown-menu" aria-labelledby="navbar1_dropdown">
-                <a class="dropdown-item" href="/login" dmx-hide="(conn_layout_whoami.data.identity &lt; 0)">Login</a>
-                <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" href="/register" internal="true" dmx-hide="(conn_layout_whoami.data.identity &gt; 0)">Register</a>
+                <a class="dropdown-item" href="/login" dmx-hide="(conn_layout_whoami.data.identity &gt; 0)">Login</a>
+                <a class="dropdown-item" href="#" dmx-on:click="run({'bootbox.confirm':{message:'Do you want to logout?',title:'Logout',buttons:{confirm:{label:'Logout'},cancel:{label:'Cancel'}},then:{steps:[{comment:{msg:'Logout'}},{serverConnect:{url:'/api/registration/logout',site:'KMITS',name:'sc'}},{run:{action:`browser1.goto(\'/\')`}}]},name:'logout'}})" dmx-show="(conn_layout_whoami.data.identity &gt; 0)">Logout</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">My Account</a>
+                <a class="dropdown-item" href="#" dmx-show="(conn_layout_whoami.data.identity &gt; 0)">My Account</a>
               </div>
             </div>
-            <a class="nav-item nav-link disabled" href="#">Disabled</a>
           </div>
         </div>
       </div>
