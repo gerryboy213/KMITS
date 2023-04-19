@@ -1,0 +1,244 @@
+{
+  "meta": {
+    "$_POST": [
+      {
+        "type": "text",
+        "name": "qdocument_code"
+      },
+      {
+        "type": "text",
+        "name": "qrevision_no"
+      },
+      {
+        "type": "text",
+        "name": "qeffectivity"
+      },
+      {
+        "type": "text",
+        "name": "qquarter"
+      },
+      {
+        "type": "text",
+        "name": "qname_office"
+      },
+      {
+        "type": "text",
+        "name": "qstrategic_goals"
+      },
+      {
+        "type": "text",
+        "name": "qsuccess_indicatortarget"
+      },
+      {
+        "type": "text",
+        "name": "qalloted_budget"
+      },
+      {
+        "type": "text",
+        "name": "qdivision_accountable"
+      },
+      {
+        "type": "text",
+        "name": "qactual_accomplishment"
+      },
+      {
+        "type": "text",
+        "name": "qaccomplish_rate"
+      },
+      {
+        "type": "text",
+        "name": "qrating"
+      },
+      {
+        "type": "text",
+        "name": "qremarks"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "insert",
+      "module": "dbupdater",
+      "action": "insert",
+      "options": {
+        "connection": "db",
+        "sql": {
+          "type": "insert",
+          "values": [
+            {
+              "table": "qreport",
+              "column": "qdocument_code",
+              "type": "text",
+              "value": "{{$_POST.qdocument_code}}"
+            },
+            {
+              "table": "qreport",
+              "column": "qrevision_no",
+              "type": "text",
+              "value": "{{$_POST.qrevision_no}}"
+            },
+            {
+              "table": "qreport",
+              "column": "qeffectivity",
+              "type": "text",
+              "value": "{{$_POST.qeffectivity}}"
+            },
+            {
+              "table": "qreport",
+              "column": "qquarter",
+              "type": "text",
+              "value": "{{$_POST.qquarter}}"
+            },
+            {
+              "table": "qreport",
+              "column": "qname_office",
+              "type": "text",
+              "value": "{{$_POST.qname_office}}"
+            },
+            {
+              "table": "qreport",
+              "column": "qstrategic_goals",
+              "type": "text",
+              "value": "{{$_POST.qstrategic_goals}}"
+            },
+            {
+              "table": "qreport",
+              "column": "qsuccess_indicatortarget",
+              "type": "text",
+              "value": "{{$_POST.qsuccess_indicatortarget}}"
+            },
+            {
+              "table": "qreport",
+              "column": "qalloted_budget",
+              "type": "text",
+              "value": "{{$_POST.qalloted_budget}}"
+            },
+            {
+              "table": "qreport",
+              "column": "qdivision_accountable",
+              "type": "text",
+              "value": "{{$_POST.qdivision_accountable}}"
+            },
+            {
+              "table": "qreport",
+              "column": "qactual_accomplishment",
+              "type": "text",
+              "value": "{{$_POST.qactual_accomplishment}}"
+            },
+            {
+              "table": "qreport",
+              "column": "qaccomplish_rate",
+              "type": "text",
+              "value": "{{$_POST.qaccomplish_rate}}"
+            },
+            {
+              "table": "qreport",
+              "column": "qrating",
+              "type": "text",
+              "value": "{{$_POST.qrating}}"
+            },
+            {
+              "table": "qreport",
+              "column": "qremarks",
+              "type": "text",
+              "value": "{{$_POST.qremarks}}"
+            }
+          ],
+          "table": "qreport",
+          "returning": "qreport_id",
+          "query": "insert into `qreport` (`qaccomplish_rate`, `qactual_accomplishment`, `qalloted_budget`, `qdivision_accountable`, `qdocument_code`, `qeffectivity`, `qname_office`, `qquarter`, `qrating`, `qremarks`, `qrevision_no`, `qstrategic_goals`, `qsuccess_indicatortarget`) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+          "params": [
+            {
+              "name": ":P1",
+              "type": "expression",
+              "value": "{{$_POST.qdocument_code}}",
+              "test": ""
+            },
+            {
+              "name": ":P2",
+              "type": "expression",
+              "value": "{{$_POST.qrevision_no}}",
+              "test": ""
+            },
+            {
+              "name": ":P3",
+              "type": "expression",
+              "value": "{{$_POST.qeffectivity}}",
+              "test": ""
+            },
+            {
+              "name": ":P4",
+              "type": "expression",
+              "value": "{{$_POST.qquarter}}",
+              "test": ""
+            },
+            {
+              "name": ":P5",
+              "type": "expression",
+              "value": "{{$_POST.qname_office}}",
+              "test": ""
+            },
+            {
+              "name": ":P6",
+              "type": "expression",
+              "value": "{{$_POST.qstrategic_goals}}",
+              "test": ""
+            },
+            {
+              "name": ":P7",
+              "type": "expression",
+              "value": "{{$_POST.qsuccess_indicatortarget}}",
+              "test": ""
+            },
+            {
+              "name": ":P8",
+              "type": "expression",
+              "value": "{{$_POST.qalloted_budget}}",
+              "test": ""
+            },
+            {
+              "name": ":P9",
+              "type": "expression",
+              "value": "{{$_POST.qdivision_accountable}}",
+              "test": ""
+            },
+            {
+              "name": ":P10",
+              "type": "expression",
+              "value": "{{$_POST.qactual_accomplishment}}",
+              "test": ""
+            },
+            {
+              "name": ":P11",
+              "type": "expression",
+              "value": "{{$_POST.qaccomplish_rate}}",
+              "test": ""
+            },
+            {
+              "name": ":P12",
+              "type": "expression",
+              "value": "{{$_POST.qrating}}",
+              "test": ""
+            },
+            {
+              "name": ":P13",
+              "type": "expression",
+              "value": "{{$_POST.qremarks}}",
+              "test": ""
+            }
+          ]
+        }
+      },
+      "meta": [
+        {
+          "name": "identity",
+          "type": "text"
+        },
+        {
+          "name": "affected",
+          "type": "number"
+        }
+      ]
+    }
+  }
+}

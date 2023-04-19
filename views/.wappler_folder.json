@@ -18,5 +18,9 @@
   "admin.ejs": {
     "layoutPage": "main",
     "description": ""
+  },
+  "opcr.ejs": {
+    "layoutPage": "admin",
+    "description": ""
   }
 }

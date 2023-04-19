@@ -30,6 +30,11 @@
       "path": "/adminhome",
       "page": "kmitsadmin/adminhome",
       "layout": "admin"
+    },
+    {
+      "path": "/opcr",
+      "page": "opcr",
+      "layout": "main"
     }
   ],
   "layouts": {
