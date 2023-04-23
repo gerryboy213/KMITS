@@ -16,89 +16,104 @@
     ]
   },
   "exec": {
-    "steps": {
-      "name": "query",
-      "module": "dbconnector",
-      "action": "select",
-      "options": {
-        "connection": "db",
-        "sql": {
-          "type": "select",
-          "columns": [
-            {
-              "table": "qreport",
-              "column": "*"
-            }
+    "steps": [
+      {
+        "name": "",
+        "module": "auth",
+        "action": "restrict",
+        "options": {
+          "provider": "KMITSsec",
+          "permissions": [
+            "Administrator"
           ],
-          "params": [],
-          "table": {
-            "name": "qreport"
-          },
-          "primary": "qreport_id",
-          "joins": [],
-          "query": "select * from `qreport`"
+          "loginUrl": "/login",
+          "forbiddenUrl": "/login"
         }
       },
-      "output": true,
-      "meta": [
-        {
-          "type": "number",
-          "name": "qreport_id"
+      {
+        "name": "query",
+        "module": "dbconnector",
+        "action": "select",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "select",
+            "columns": [
+              {
+                "table": "qreport",
+                "column": "*"
+              }
+            ],
+            "params": [],
+            "table": {
+              "name": "qreport"
+            },
+            "primary": "qreport_id",
+            "joins": [],
+            "query": "select * from `qreport`"
+          }
         },
-        {
-          "type": "text",
-          "name": "qdocument_code"
-        },
-        {
-          "type": "text",
-          "name": "qrevision_no"
-        },
-        {
-          "type": "text",
-          "name": "qeffectivity"
-        },
-        {
-          "type": "text",
-          "name": "qquarter"
-        },
-        {
-          "type": "text",
-          "name": "qname_office"
-        },
-        {
-          "type": "text",
-          "name": "qstrategic_goals"
-        },
-        {
-          "type": "text",
-          "name": "qsuccess_indicatortarget"
-        },
-        {
-          "type": "text",
-          "name": "qalloted_budget"
-        },
-        {
-          "type": "text",
-          "name": "qdivision_accountable"
-        },
-        {
-          "type": "text",
-          "name": "qactual_accomplishment"
-        },
-        {
-          "type": "text",
-          "name": "qaccomplish_rate"
-        },
-        {
-          "type": "text",
-          "name": "qrating"
-        },
-        {
-          "type": "text",
-          "name": "qremarks"
-        }
-      ],
-      "outputType": "array"
-    }
+        "output": true,
+        "meta": [
+          {
+            "type": "number",
+            "name": "qreport_id"
+          },
+          {
+            "type": "text",
+            "name": "qdocument_code"
+          },
+          {
+            "type": "text",
+            "name": "qrevision_no"
+          },
+          {
+            "type": "text",
+            "name": "qeffectivity"
+          },
+          {
+            "type": "text",
+            "name": "qquarter"
+          },
+          {
+            "type": "text",
+            "name": "qname_office"
+          },
+          {
+            "type": "text",
+            "name": "qstrategic_goals"
+          },
+          {
+            "type": "text",
+            "name": "qsuccess_indicatortarget"
+          },
+          {
+            "type": "text",
+            "name": "qalloted_budget"
+          },
+          {
+            "type": "text",
+            "name": "qdivision_accountable"
+          },
+          {
+            "type": "text",
+            "name": "qactual_accomplishment"
+          },
+          {
+            "type": "text",
+            "name": "qaccomplish_rate"
+          },
+          {
+            "type": "text",
+            "name": "qrating"
+          },
+          {
+            "type": "text",
+            "name": "qremarks"
+          }
+        ],
+        "outputType": "array"
+      }
+    ]
   }
 }

@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "qreport_id"
+      }
+    ],
+    "$_POST": [
+      {
+        "type": "text",
+        "name": "qreport_id"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "",
+        "module": "auth",
+        "action": "restrict",
+        "options": {
+          "provider": "KMITSsec",
+          "permissions": [
+            "Administrator"
+          ],
+          "loginUrl": "/login",
+          "forbiddenUrl": "/login"
+        }
+      },
+      {
+        "name": "delete",
+        "module": "dbupdater",
+        "action": "delete",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "delete",
+            "table": "qreport",
+            "wheres": {
+              "condition": "AND",
+              "rules": [
+                {
+                  "id": "qreport_id",
+                  "field": "qreport_id",
+                  "type": "double",
+                  "operator": "equal",
+                  "value": "{{$_GET.qreport_id}}",
+                  "data": {
+                    "column": "qreport_id"
+                  },
+                  "operation": "="
+                }
+              ],
+              "conditional": null,
+              "valid": true
+            },
+            "returning": "qreport_id",
+            "query": "delete from `qreport` where `qreport_id` = ?",
+            "params": [
+              {
+                "operator": "equal",
+                "type": "expression",
+                "name": ":P1",
+                "value": "{{$_GET.qreport_id}}",
+                "test": ""
+              }
+            ]
+          }
+        },
+        "meta": [
+          {
+            "name": "affected",
+            "type": "number"
+          }
+        ]
+      }
+    ]
+  }
+}

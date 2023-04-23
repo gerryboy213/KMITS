@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "query",
+      "module": "dbconnector",
+      "action": "select",
+      "options": {
+        "connection": "db",
+        "sql": {
+          "type": "select",
+          "columns": [
+            {
+              "table": "qreport",
+              "column": "qdocument_code"
+            },
+            {
+              "table": "qreport",
+              "column": "user_id"
+            },
+            {
+              "table": "user",
+              "column": "first_name"
+            },
+            {
+              "table": "user",
+              "column": "last_name"
+            },
+            {
+              "table": "user",
+              "column": "email"
+            }
+          ],
+          "params": [],
+          "table": {
+            "name": "qreport"
+          },
+          "primary": "qreport_id",
+          "joins": [
+            {
+              "table": "user",
+              "column": "*",
+              "type": "INNER",
+              "clauses": {
+                "condition": "AND",
+                "rules": [
+                  {
+                    "table": "user",
+                    "column": "user_id",
+                    "operator": "equal",
+                    "operation": "=",
+                    "value": {
+                      "table": "qreport",
+                      "column": "user_id"
+                    }
+                  }
+                ]
+              },
+              "primary": "user_id"
+            }
+          ],
+          "query": "select `qreport`.`qdocument_code`, `qreport`.`user_id`, `user`.`first_name`, `user`.`last_name`, `user`.`email` from `qreport` inner join `user` on `user`.`user_id` = `qreport`.`user_id`"
+        }
+      },
+      "output": true,
+      "meta": [
+        {
+          "type": "text",
+          "name": "qdocument_code"
+        },
+        {
+          "type": "text",
+          "name": "user_id"
+        },
+        {
+          "type": "text",
+          "name": "first_name"
+        },
+        {
+          "type": "text",
+          "name": "last_name"
+        },
+        {
+          "type": "text",
+          "name": "email"
+        }
+      ],
+      "outputType": "array"
+    }
+  }
+}

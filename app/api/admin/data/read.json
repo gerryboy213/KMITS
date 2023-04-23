@@ -1,84 +1,147 @@
 {
-  "name": "query",
-  "module": "dbconnector",
-  "action": "single",
-  "options": {
-    "connection": "db",
-    "sql": {
-      "type": "select",
-      "columns": [
-        {
-          "table": "qreport",
-          "column": "*"
-        }
-      ],
-      "params": [],
-      "table": {
-        "name": "qreport"
-      },
-      "primary": "qreport_id",
-      "joins": [],
-      "query": "select * from `qreport`"
-    }
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "qreport_id"
+      }
+    ]
   },
-  "output": true,
-  "meta": [
-    {
-      "type": "number",
-      "name": "qreport_id"
-    },
-    {
-      "type": "text",
-      "name": "qdocument_code"
-    },
-    {
-      "type": "text",
-      "name": "qrevision_no"
-    },
-    {
-      "type": "text",
-      "name": "qeffectivity"
-    },
-    {
-      "type": "text",
-      "name": "qquarter"
-    },
-    {
-      "type": "text",
-      "name": "qname_office"
-    },
-    {
-      "type": "text",
-      "name": "qstrategic_goals"
-    },
-    {
-      "type": "text",
-      "name": "qsuccess_indicatortarget"
-    },
-    {
-      "type": "text",
-      "name": "qalloted_budget"
-    },
-    {
-      "type": "text",
-      "name": "qdivision_accountable"
-    },
-    {
-      "type": "text",
-      "name": "qactual_accomplishment"
-    },
-    {
-      "type": "text",
-      "name": "qaccomplish_rate"
-    },
-    {
-      "type": "text",
-      "name": "qrating"
-    },
-    {
-      "type": "text",
-      "name": "qremarks"
-    }
-  ],
-  "outputType": "object"
+  "exec": {
+    "steps": [
+      {
+        "name": "",
+        "module": "auth",
+        "action": "restrict",
+        "options": {
+          "provider": "KMITSsec",
+          "permissions": [
+            "Administrator",
+            "Member"
+          ],
+          "loginUrl": "/login",
+          "forbiddenUrl": "/login"
+        }
+      },
+      {
+        "name": "query",
+        "module": "dbconnector",
+        "action": "single",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "select",
+            "columns": [
+              {
+                "table": "qreport",
+                "column": "*"
+              }
+            ],
+            "params": [
+              {
+                "operator": "equal",
+                "type": "expression",
+                "name": ":P1",
+                "value": "{{$_GET.qreport_id}}",
+                "test": ""
+              }
+            ],
+            "table": {
+              "name": "qreport"
+            },
+            "primary": "qreport_id",
+            "joins": [],
+            "query": "select * from `qreport` where `qreport`.`qreport_id` = ?",
+            "wheres": {
+              "condition": "AND",
+              "rules": [
+                {
+                  "id": "qreport.qreport_id",
+                  "field": "qreport.qreport_id",
+                  "type": "double",
+                  "operator": "equal",
+                  "value": "{{$_GET.qreport_id}}",
+                  "data": {
+                    "table": "qreport",
+                    "column": "qreport_id",
+                    "type": "number",
+                    "columnObj": {
+                      "type": "increments",
+                      "primary": true,
+                      "unique": false,
+                      "nullable": false,
+                      "name": "qreport_id"
+                    }
+                  },
+                  "operation": "="
+                }
+              ],
+              "conditional": null,
+              "valid": true
+            }
+          }
+        },
+        "output": true,
+        "meta": [
+          {
+            "type": "number",
+            "name": "qreport_id"
+          },
+          {
+            "type": "text",
+            "name": "qdocument_code"
+          },
+          {
+            "type": "text",
+            "name": "qrevision_no"
+          },
+          {
+            "type": "text",
+            "name": "qeffectivity"
+          },
+          {
+            "type": "text",
+            "name": "qquarter"
+          },
+          {
+            "type": "text",
+            "name": "qname_office"
+          },
+          {
+            "type": "text",
+            "name": "qstrategic_goals"
+          },
+          {
+            "type": "text",
+            "name": "qsuccess_indicatortarget"
+          },
+          {
+            "type": "text",
+            "name": "qalloted_budget"
+          },
+          {
+            "type": "text",
+            "name": "qdivision_accountable"
+          },
+          {
+            "type": "text",
+            "name": "qactual_accomplishment"
+          },
+          {
+            "type": "text",
+            "name": "qaccomplish_rate"
+          },
+          {
+            "type": "text",
+            "name": "qrating"
+          },
+          {
+            "type": "text",
+            "name": "qremarks"
+          }
+        ],
+        "outputType": "object"
+      }
+    ]
+  }
 }
