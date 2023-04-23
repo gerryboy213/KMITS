@@ -32,9 +32,9 @@
       "layout": "admin"
     },
     {
-      "path": "/opcr",
-      "page": "opcr",
-      "layout": "main"
+      "path": "/kmitsadmin/opcrreport",
+      "page": "kmitsadmin/opcrreport",
+      "layout": "admin"
     }
   ],
   "layouts": {

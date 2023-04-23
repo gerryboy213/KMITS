@@ -52,6 +52,10 @@
       {
         "type": "text",
         "name": "qremarks"
+      },
+      {
+        "type": "number",
+        "name": "qreport_id"
       }
     ]
   },
@@ -64,21 +68,20 @@
         "options": {
           "provider": "KMITSsec",
           "permissions": [
-            "Administrator",
-            "Member"
+            "Administrator"
           ],
           "loginUrl": "/login",
           "forbiddenUrl": "/login"
         }
       },
       {
-        "name": "insert",
+        "name": "update",
         "module": "dbupdater",
-        "action": "insert",
+        "action": "update",
         "options": {
           "connection": "db",
           "sql": {
-            "type": "insert",
+            "type": "update",
             "values": [
               {
                 "table": "qreport",
@@ -160,8 +163,23 @@
               }
             ],
             "table": "qreport",
+            "wheres": {
+              "condition": "AND",
+              "rules": [
+                {
+                  "id": "qreport_id",
+                  "type": "double",
+                  "operator": "equal",
+                  "value": "{{$_POST.qreport_id}}",
+                  "data": {
+                    "column": "qreport_id"
+                  },
+                  "operation": "="
+                }
+              ]
+            },
             "returning": "qreport_id",
-            "query": "insert into `qreport` (`qaccomplish_rate`, `qactual_accomplishment`, `qalloted_budget`, `qdivision_accountable`, `qdocument_code`, `qeffectivity`, `qname_office`, `qquarter`, `qrating`, `qremarks`, `qrevision_no`, `qstrategic_goals`, `qsuccess_indicatortarget`) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            "query": "update `qreport` set `qdocument_code` = ?, `qrevision_no` = ?, `qeffectivity` = ?, `qquarter` = ?, `qname_office` = ?, `qstrategic_goals` = ?, `qsuccess_indicatortarget` = ?, `qalloted_budget` = ?, `qdivision_accountable` = ?, `qactual_accomplishment` = ?, `qaccomplish_rate` = ?, `qrating` = ?, `qremarks` = ? where `qreport_id` = ?",
             "params": [
               {
                 "name": ":P1",
@@ -240,15 +258,18 @@
                 "type": "expression",
                 "value": "{{$_POST.qremarks}}",
                 "test": ""
+              },
+              {
+                "operator": "equal",
+                "type": "expression",
+                "name": ":P14",
+                "value": "{{$_POST.qreport_id}}",
+                "test": ""
               }
             ]
           }
         },
         "meta": [
-          {
-            "name": "identity",
-            "type": "text"
-          },
           {
             "name": "affected",
             "type": "number"

@@ -2,5 +2,9 @@
   "adminhome.ejs": {
     "layoutPage": "admin",
     "description": ""
+  },
+  "opcrreport.ejs": {
+    "layoutPage": "admin",
+    "description": ""
   }
 }
