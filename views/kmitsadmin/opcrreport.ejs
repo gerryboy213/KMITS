@@ -1,4 +1,4 @@
-<!-- Wappler include head-page="layouts/admin" bootstrap5="local" is="dmx-app" id="opcrreport" appConnect="local" components="{dmxBootstrap5TableGenerator:{},dmxTyped:{},dmxBootstrap5Modal:{},dmxNotifications:{},dmxBootstrap5Navigation:{}}" -->
+<!-- Wappler include head-page="layouts/admin" bootstrap5="local" is="dmx-app" id="opcrreport" appConnect="local" components="{dmxBootstrap5TableGenerator:{},dmxTyped:{},dmxBootstrap5Modal:{},dmxNotifications:{},dmxBootstrap5Navigation:{},dmxValidator:{}}" -->
 
 
 <dmx-notifications id="notifies1"></dmx-notifications>
@@ -131,43 +131,43 @@
                                 <div class="form-group mb-3 row">
                                     <label for="inp_qdocument_code" class="col-sm-2 col-form-label">Qdocument code</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inp_qdocument_code" name="qdocument_code" aria-describedby="inp_qdocument_code_help" placeholder="Enter Qdocument code">
+                                        <input type="text" class="form-control" id="inp_qdocument_code" name="qdocument_code" aria-describedby="inp_qdocument_code_help" placeholder="Enter Qdocument code" required="">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3 row">
                                     <label for="inp_qrevision_no" class="col-sm-2 col-form-label">Qrevision no</label>
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="inp_qrevision_no" name="qrevision_no" aria-describedby="inp_qrevision_no_help" placeholder="Enter Qrevision no">
+                                        <input type="number" class="form-control" id="inp_qrevision_no" name="qrevision_no" aria-describedby="inp_qrevision_no_help" placeholder="Enter Qrevision no" required="">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3 row">
                                     <label for="inp_qeffectivity" class="col-sm-2 col-form-label">Qeffectivity</label>
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control" id="inp_qeffectivity" name="qeffectivity" aria-describedby="inp_qeffectivity_help" placeholder="Enter Qeffectivity">
+                                        <input type="date" class="form-control" id="inp_qeffectivity" name="qeffectivity" aria-describedby="inp_qeffectivity_help" placeholder="Enter Qeffectivity" required="">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3 row">
                                     <label for="inp_qquarter" class="col-sm-2 col-form-label">Qquarter</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inp_qquarter" name="qquarter" aria-describedby="inp_qquarter_help" placeholder="Enter Qquarter">
+                                        <input type="text" class="form-control" id="inp_qquarter" name="qquarter" aria-describedby="inp_qquarter_help" placeholder="Enter Qquarter" required="">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3 row">
                                     <label for="inp_qname_office" class="col-sm-2 col-form-label">Qname office</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inp_qname_office" name="qname_office" aria-describedby="inp_qname_office_help" placeholder="Enter Qname office">
+                                        <input type="text" class="form-control" id="inp_qname_office" name="qname_office" aria-describedby="inp_qname_office_help" placeholder="Enter Qname office" required="">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3 row">
                                     <label for="inp_qstrategic_goals" class="col-sm-2 col-form-label">Qstrategic goals</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inp_qstrategic_goals" name="qstrategic_goals" aria-describedby="inp_qstrategic_goals_help" placeholder="Enter Qstrategic goals">
+                                        <input type="text" class="form-control" id="inp_qstrategic_goals" name="qstrategic_goals" aria-describedby="inp_qstrategic_goals_help" placeholder="Enter Qstrategic goals" required="">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3 row">
                                     <label for="inp_qsuccess_indicatortarget" class="col-sm-2 col-form-label">Qsuccess indicatortarget</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inp_qsuccess_indicatortarget" name="qsuccess_indicatortarget" aria-describedby="inp_qsuccess_indicatortarget_help" placeholder="Enter Qsuccess indicatortarget">
+                                        <input type="text" class="form-control" id="inp_qsuccess_indicatortarget" name="qsuccess_indicatortarget" aria-describedby="inp_qsuccess_indicatortarget_help" placeholder="Enter Qsuccess indicatortarget" required="">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3 row">
@@ -219,13 +219,12 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
 </div>
 <dmx-serverconnect id="conn_deleterec" url="/api/admin/data/delete" noload="true"></dmx-serverconnect>
-<dmx-serverconnect id="conn_addrec" url="/api/admin/data/create" noload="true"></dmx-serverconnect>
+<dmx-serverconnect id="conn_addrec" url="/api/admin/data/create"></dmx-serverconnect>
 <dmx-serverconnect id="conn_singlerec" url="/api/admin/data/read" noload="true" dmx-param:qreport_id="conn_singlerec.data.query.qreport_id"></dmx-serverconnect>
 <dmx-serverconnect id="conn_report" url="/api/admin/data/search" dmx-param:filter="text1.value"></dmx-serverconnect>
 <div class="container-fluid">
@@ -240,17 +239,17 @@
                     <thead>
                         <tr>
                             <td></td>
-                            <th>Qreport</th>
-                            <th>Qdocument code</th>
-                            <th>Qrevision no</th>
-                            <th>Qeffectivity</th>
-                            <th>Qquarter</th>
-                            <th>Qname office</th>
-                            <th>Qstrategic goals</th>
-                            <th>Qsuccess indicatortarget</th>
-                            <th>Qalloted budget</th>
-                            <th>Qdivision accountable</th>
-                            <th>Qactual accomplishment</th>
+                            <th>Report</th>
+                            <th>Document Code</th>
+                            <th>Revision No</th>
+                            <th>Effectivity Date</th>
+                            <th>Quarter</th>
+                            <th>Office Name</th>
+                            <th>Strategic Goals</th>
+                            <th>Success Indicator Target</th>
+                            <th>Alloted Budget</th>
+                            <th>Division Accountable</th>
+                            <th>Actual Accomplishment</th>
                             <th>Qaccomplish rate</th>
                             <th>Qrating</th>
                             <th>Qremarks</th>
