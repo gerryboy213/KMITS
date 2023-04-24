@@ -6,6 +6,10 @@
     "client": "sqlite3",
     "connection": {
       "filename": "/db_dev.sqlite3"
-    }
-  }
+    },
+    "meta": {}
+  },
+  "actionFilePath": "file:///C:/xampp/htdocs/KMITS/app/modules/connections/db.json",
+  "serverType": "node",
+  "fileName": "db.json"
 }

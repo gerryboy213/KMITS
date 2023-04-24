@@ -110,6 +110,10 @@
           {
             "type": "text",
             "name": "qremarks"
+          },
+          {
+            "type": "text",
+            "name": "user_id"
           }
         ],
         "outputType": "array"

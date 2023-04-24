@@ -5,15 +5,23 @@
   "designFramework": "bootstrap5",
   "frameworks": [
     {
-      "name": "fontawesome_5",
-      "type": "cdn"
-    },
-    {
       "name": "bootstrap5",
       "type": "local"
     },
     {
       "name": "appConnect",
+      "type": "local"
+    },
+    {
+      "name": "bootstrap_icons",
+      "type": "cdn"
+    },
+    {
+      "name": "framework7_icons",
+      "type": "local"
+    },
+    {
+      "name": "fontawesome_6",
       "type": "local"
     }
   ],

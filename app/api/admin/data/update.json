@@ -56,6 +56,10 @@
       {
         "type": "number",
         "name": "qreport_id"
+      },
+      {
+        "type": "text",
+        "name": "user_id"
       }
     ]
   },
@@ -83,6 +87,12 @@
           "sql": {
             "type": "update",
             "values": [
+              {
+                "table": "qreport",
+                "column": "qreport_id",
+                "type": "number",
+                "value": "{{$_POST.qreport_id}}"
+              },
               {
                 "table": "qreport",
                 "column": "qdocument_code",
@@ -160,6 +170,12 @@
                 "column": "qremarks",
                 "type": "text",
                 "value": "{{$_POST.qremarks}}"
+              },
+              {
+                "table": "qreport",
+                "column": "user_id",
+                "type": "text",
+                "value": "{{$_POST.user_id}}"
               }
             ],
             "table": "qreport",
@@ -179,90 +195,102 @@
               ]
             },
             "returning": "qreport_id",
-            "query": "update `qreport` set `qdocument_code` = ?, `qrevision_no` = ?, `qeffectivity` = ?, `qquarter` = ?, `qname_office` = ?, `qstrategic_goals` = ?, `qsuccess_indicatortarget` = ?, `qalloted_budget` = ?, `qdivision_accountable` = ?, `qactual_accomplishment` = ?, `qaccomplish_rate` = ?, `qrating` = ?, `qremarks` = ? where `qreport_id` = ?",
+            "query": "update `qreport` set `qreport_id` = ?, `qdocument_code` = ?, `qrevision_no` = ?, `qeffectivity` = ?, `qquarter` = ?, `qname_office` = ?, `qstrategic_goals` = ?, `qsuccess_indicatortarget` = ?, `qalloted_budget` = ?, `qdivision_accountable` = ?, `qactual_accomplishment` = ?, `qaccomplish_rate` = ?, `qrating` = ?, `qremarks` = ?, `user_id` = ? where `qreport_id` = ? returning `qreport_id`",
             "params": [
               {
                 "name": ":P1",
                 "type": "expression",
-                "value": "{{$_POST.qdocument_code}}",
+                "value": "{{$_POST.qreport_id}}",
                 "test": ""
               },
               {
                 "name": ":P2",
                 "type": "expression",
-                "value": "{{$_POST.qrevision_no}}",
+                "value": "{{$_POST.qdocument_code}}",
                 "test": ""
               },
               {
                 "name": ":P3",
                 "type": "expression",
-                "value": "{{$_POST.qeffectivity}}",
+                "value": "{{$_POST.qrevision_no}}",
                 "test": ""
               },
               {
                 "name": ":P4",
                 "type": "expression",
-                "value": "{{$_POST.qquarter}}",
+                "value": "{{$_POST.qeffectivity}}",
                 "test": ""
               },
               {
                 "name": ":P5",
                 "type": "expression",
-                "value": "{{$_POST.qname_office}}",
+                "value": "{{$_POST.qquarter}}",
                 "test": ""
               },
               {
                 "name": ":P6",
                 "type": "expression",
-                "value": "{{$_POST.qstrategic_goals}}",
+                "value": "{{$_POST.qname_office}}",
                 "test": ""
               },
               {
                 "name": ":P7",
                 "type": "expression",
-                "value": "{{$_POST.qsuccess_indicatortarget}}",
+                "value": "{{$_POST.qstrategic_goals}}",
                 "test": ""
               },
               {
                 "name": ":P8",
                 "type": "expression",
-                "value": "{{$_POST.qalloted_budget}}",
+                "value": "{{$_POST.qsuccess_indicatortarget}}",
                 "test": ""
               },
               {
                 "name": ":P9",
                 "type": "expression",
-                "value": "{{$_POST.qdivision_accountable}}",
+                "value": "{{$_POST.qalloted_budget}}",
                 "test": ""
               },
               {
                 "name": ":P10",
                 "type": "expression",
-                "value": "{{$_POST.qactual_accomplishment}}",
+                "value": "{{$_POST.qdivision_accountable}}",
                 "test": ""
               },
               {
                 "name": ":P11",
                 "type": "expression",
-                "value": "{{$_POST.qaccomplish_rate}}",
+                "value": "{{$_POST.qactual_accomplishment}}",
                 "test": ""
               },
               {
                 "name": ":P12",
                 "type": "expression",
-                "value": "{{$_POST.qrating}}",
+                "value": "{{$_POST.qaccomplish_rate}}",
                 "test": ""
               },
               {
                 "name": ":P13",
                 "type": "expression",
+                "value": "{{$_POST.qrating}}",
+                "test": ""
+              },
+              {
+                "name": ":P14",
+                "type": "expression",
                 "value": "{{$_POST.qremarks}}",
+                "test": ""
+              },
+              {
+                "name": ":P15",
+                "type": "expression",
+                "value": "{{$_POST.user_id}}",
                 "test": ""
               },
               {
                 "operator": "equal",
                 "type": "expression",
-                "name": ":P14",
+                "name": ":P16",
                 "value": "{{$_POST.qreport_id}}",
                 "test": ""
               }

@@ -1,15 +1,246 @@
-<!-- Wappler include head-page="layouts/admin" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="opcrreport" appConnect="local" components="{dmxBootstrap5TableGenerator:{}}" -->
+<!-- Wappler include head-page="layouts/admin" bootstrap5="local" is="dmx-app" id="opcrreport" appConnect="local" components="{dmxBootstrap5TableGenerator:{},dmxTyped:{},dmxBootstrap5Modal:{},dmxNotifications:{},dmxBootstrap5Navigation:{}}" -->
+
+
+<dmx-notifications id="notifies1"></dmx-notifications>
+<div class="modal fade" id="modal_edit" is="dmx-bs5-modal" tabindex="-1" dmx-on:hide-bs-modal="serverconnectform1.reset()">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <form is="dmx-serverconnect-form" id="serverconnectform1" method="post" action="/api/admin/data/update" dmx-generator="bootstrap5" dmx-form-type="horizontal" dmx-populate="conn_singlerec.data.query" dmx-on:success="serverconnectform1.reset();modal_edit.hide();notifies1.success('Updated');conn_report.load({})">
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qreport_id" class="col-sm-2 col-form-label">Report ID</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="inp_qreport_id" name="qreport_id" dmx-bind:value="conn_singlerec.data.query.qreport_id" aria-describedby="inp_qreport_id_help" placeholder="Enter Report ID" readonly="true">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qdocument_code" class="col-sm-2 col-form-label">Document Code</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qdocument_code" name="qdocument_code" dmx-bind:value="conn_singlerec.data.query.qdocument_code" aria-describedby="inp_qdocument_code_help" placeholder="Enter Document Code">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qrevision_no" class="col-sm-2 col-form-label">Revision No</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qrevision_no" name="qrevision_no" dmx-bind:value="conn_singlerec.data.query.qrevision_no" aria-describedby="inp_qrevision_no_help" placeholder="Enter Revision No">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qeffectivity" class="col-sm-2 col-form-label">Qeffectivity</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qeffectivity" name="qeffectivity" dmx-bind:value="conn_singlerec.data.query.qeffectivity" aria-describedby="inp_qeffectivity_help" placeholder="Enter Qeffectivity">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qquarter" class="col-sm-2 col-form-label">Qquarter</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qquarter" name="qquarter" dmx-bind:value="conn_singlerec.data.query.qquarter" aria-describedby="inp_qquarter_help" placeholder="Enter Qquarter">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qname_office" class="col-sm-2 col-form-label">Qname office</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qname_office" name="qname_office" dmx-bind:value="conn_singlerec.data.query.qname_office" aria-describedby="inp_qname_office_help" placeholder="Enter Qname office">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qstrategic_goals" class="col-sm-2 col-form-label">Qstrategic goals</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qstrategic_goals" name="qstrategic_goals" dmx-bind:value="conn_singlerec.data.query.qstrategic_goals" aria-describedby="inp_qstrategic_goals_help" placeholder="Enter Qstrategic goals">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qsuccess_indicatortarget" class="col-sm-2 col-form-label">Qsuccess indicatortarget</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qsuccess_indicatortarget" name="qsuccess_indicatortarget" dmx-bind:value="conn_singlerec.data.query.qsuccess_indicatortarget" aria-describedby="inp_qsuccess_indicatortarget_help" placeholder="Enter Qsuccess indicatortarget">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qalloted_budget" class="col-sm-2 col-form-label">Qalloted budget</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qalloted_budget" name="qalloted_budget" dmx-bind:value="conn_singlerec.data.query.qalloted_budget" aria-describedby="inp_qalloted_budget_help" placeholder="Enter Qalloted budget">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qdivision_accountable" class="col-sm-2 col-form-label">Qdivision accountable</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qdivision_accountable" name="qdivision_accountable" dmx-bind:value="conn_singlerec.data.query.qdivision_accountable" aria-describedby="inp_qdivision_accountable_help" placeholder="Enter Qdivision accountable">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qactual_accomplishment" class="col-sm-2 col-form-label">Qactual accomplishment</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qactual_accomplishment" name="qactual_accomplishment" dmx-bind:value="conn_singlerec.data.query.qactual_accomplishment" aria-describedby="inp_qactual_accomplishment_help" placeholder="Enter Qactual accomplishment">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qaccomplish_rate" class="col-sm-2 col-form-label">Qaccomplish rate</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qaccomplish_rate" name="qaccomplish_rate" dmx-bind:value="conn_singlerec.data.query.qaccomplish_rate" aria-describedby="inp_qaccomplish_rate_help" placeholder="Enter Qaccomplish rate">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qrating" class="col-sm-2 col-form-label">Qrating</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qrating" name="qrating" dmx-bind:value="conn_singlerec.data.query.qrating" aria-describedby="inp_qrating_help" placeholder="Enter Qrating">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qremarks" class="col-sm-2 col-form-label">Qremarks</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qremarks" name="qremarks" dmx-bind:value="conn_singlerec.data.query.qremarks" aria-describedby="inp_qremarks_help" placeholder="Enter Qremarks">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <div class="col-sm-2">&nbsp;</div>
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-primary" dmx-bind:value="conn_singlerec.data.query.Save" dmx-bind:disabled="state.executing">Save <span class="spinner-border spinner-border-sm" role="status" dmx-show="state.executing"></span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal_add" is="dmx-bs5-modal" tabindex="-1" dmx-on:hide-bs-modal="serverconnectform1.reset()">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <form is="dmx-serverconnect-form" id="serverconnectform2" method="post" action="/api/admin/data/create" dmx-generator="bootstrap5" dmx-form-type="horizontal" dmx-on:success="serverconnectform2.reset();modal_add.hide();notifies1.success('Data Added Successfully');conn_report.load({})">
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qdocument_code" class="col-sm-2 col-form-label">Qdocument code</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qdocument_code" name="qdocument_code" aria-describedby="inp_qdocument_code_help" placeholder="Enter Qdocument code">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qrevision_no" class="col-sm-2 col-form-label">Qrevision no</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="inp_qrevision_no" name="qrevision_no" aria-describedby="inp_qrevision_no_help" placeholder="Enter Qrevision no">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qeffectivity" class="col-sm-2 col-form-label">Qeffectivity</label>
+                                    <div class="col-sm-10">
+                                        <input type="date" class="form-control" id="inp_qeffectivity" name="qeffectivity" aria-describedby="inp_qeffectivity_help" placeholder="Enter Qeffectivity">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qquarter" class="col-sm-2 col-form-label">Qquarter</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qquarter" name="qquarter" aria-describedby="inp_qquarter_help" placeholder="Enter Qquarter">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qname_office" class="col-sm-2 col-form-label">Qname office</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qname_office" name="qname_office" aria-describedby="inp_qname_office_help" placeholder="Enter Qname office">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qstrategic_goals" class="col-sm-2 col-form-label">Qstrategic goals</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qstrategic_goals" name="qstrategic_goals" aria-describedby="inp_qstrategic_goals_help" placeholder="Enter Qstrategic goals">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qsuccess_indicatortarget" class="col-sm-2 col-form-label">Qsuccess indicatortarget</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qsuccess_indicatortarget" name="qsuccess_indicatortarget" aria-describedby="inp_qsuccess_indicatortarget_help" placeholder="Enter Qsuccess indicatortarget">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qalloted_budget" class="col-sm-2 col-form-label">Qalloted budget</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qalloted_budget" name="qalloted_budget" aria-describedby="inp_qalloted_budget_help" placeholder="Enter Qalloted budget">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qdivision_accountable" class="col-sm-2 col-form-label">Qdivision accountable</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qdivision_accountable" name="qdivision_accountable" aria-describedby="inp_qdivision_accountable_help" placeholder="Enter Qdivision accountable">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qactual_accomplishment" class="col-sm-2 col-form-label">Qactual accomplishment</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qactual_accomplishment" name="qactual_accomplishment" aria-describedby="inp_qactual_accomplishment_help" placeholder="Enter Qactual accomplishment">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qaccomplish_rate" class="col-sm-2 col-form-label">Qaccomplish rate</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qaccomplish_rate" name="qaccomplish_rate" aria-describedby="inp_qaccomplish_rate_help" placeholder="Enter Qaccomplish rate">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qrating" class="col-sm-2 col-form-label">Qrating</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qrating" name="qrating" aria-describedby="inp_qrating_help" placeholder="Enter Qrating">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <label for="inp_qremarks" class="col-sm-2 col-form-label">Qremarks</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inp_qremarks" name="qremarks" aria-describedby="inp_qremarks_help" placeholder="Enter Qremarks">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3 row">
+                                    <div class="col-sm-2">&nbsp;</div>
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-primary" dmx-bind:disabled="state.executing">Save <span class="spinner-border spinner-border-sm" role="status" dmx-show="state.executing"></span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<dmx-serverconnect id="conn_deleterec" url="/api/admin/data/delete" noload="true"></dmx-serverconnect>
+<dmx-serverconnect id="conn_addrec" url="/api/admin/data/create" noload="true"></dmx-serverconnect>
+<dmx-serverconnect id="conn_singlerec" url="/api/admin/data/read" noload="true" dmx-param:qreport_id="conn_singlerec.data.query.qreport_id"></dmx-serverconnect>
 <dmx-serverconnect id="conn_report" url="/api/admin/data/search" dmx-param:filter="text1.value"></dmx-serverconnect>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col">
-            <input id="text1" name="Filter" type="text" class="form-control">
+            <button id="btn_addreport" class="btn btn-success" dmx-on:click="conn_addrec.load({});modal_add.show()">Add Report</button>
+
         </div>
         <div class="col">
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover table-sm">
                     <thead>
                         <tr>
+                            <td></td>
+                            <th>Qreport</th>
                             <th>Qdocument code</th>
                             <th>Qrevision no</th>
                             <th>Qeffectivity</th>
@@ -23,10 +254,16 @@
                             <th>Qaccomplish rate</th>
                             <th>Qrating</th>
                             <th>Qremarks</th>
+                            <th>User</th>
                         </tr>
                     </thead>
-                    <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="conn_report.data.query" id="tableRepeat1">
+                    <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="conn_report.data.query" id="tableRepeat2">
                         <tr>
+                            <td>
+
+                                <button id="btn_editreport" class="btn btn-success" dmx-on:click="conn_singlerec.load({qreport_id: qreport_id});modal_edit.show()">Edit</button><button id="btn_deletereport" class="btn btn-danger" dmx-on:click="conn_deleterec.load({qreport_id: qreport_id});conn_report.load({})">Delete</button>
+                            </td>
+                            <td dmx-text="qreport_id"></td>
                             <td dmx-text="qdocument_code"></td>
                             <td dmx-text="qrevision_no"></td>
                             <td dmx-text="qeffectivity"></td>
@@ -40,6 +277,7 @@
                             <td dmx-text="qaccomplish_rate"></td>
                             <td dmx-text="qrating"></td>
                             <td dmx-text="qremarks"></td>
+                            <td dmx-text="user_id"></td>
                         </tr>
                     </tbody>
                 </table>
