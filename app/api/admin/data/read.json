@@ -16,8 +16,7 @@
         "options": {
           "provider": "KMITSsec",
           "permissions": [
-            "Administrator",
-            "Member"
+            "Administrator"
           ],
           "loginUrl": "/login",
           "forbiddenUrl": "/login"
@@ -73,7 +72,8 @@
                       "name": "qreport_id"
                     }
                   },
-                  "operation": "="
+                  "operation": "=",
+                  "table": "qreport"
                 }
               ],
               "conditional": null,
@@ -138,6 +138,10 @@
           {
             "type": "text",
             "name": "qremarks"
+          },
+          {
+            "type": "text",
+            "name": "user_id"
           }
         ],
         "outputType": "object"
